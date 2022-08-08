@@ -41,7 +41,7 @@ export async function loginUser (request, response) {
         
         const { rows: user } = await connection.query('SELECT * FROM users WHERE email = $1', [email]);
         
-        if(user[0].length === 0) {
+        if(user[0] === undefined) {
             return response.status(401).send("Usuário ou senha incorretos!");
         };
         
